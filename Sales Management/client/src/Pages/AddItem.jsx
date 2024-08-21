@@ -110,17 +110,17 @@ export default function AddItem() {
         <input type='file' ref={fileRef2} id='alternateItemPicture' hidden accept='image/*' onChange={(e) => setImage2(e.target.files[0])} />
 
         <div>
+          <img src={formData.itemPicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Profile' onClick={handleImage1Click} />
+          <img src={formData.alternateItemPicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Alternate Profile' onClick={handleImage2Click} />
+        </div>
+
+        <div>
           <button className="upload-button" type="button" onClick={handleImage1Click}>
             Upload Item Image 1
           </button>
           <button className="upload-button" type="button" onClick={handleImage2Click}>
           Upload Item Image 2
           </button>
-        </div>
-
-        <div>
-          <img src={formData.itemPicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Profile' onClick={handleImage1Click} />
-          <img src={formData.alternateItemPicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Alternate Profile' onClick={handleImage2Click} />
         </div>
 
         <p className="upload-progress-errors">

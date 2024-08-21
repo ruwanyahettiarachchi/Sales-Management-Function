@@ -1,7 +1,7 @@
 /* Main container styles */
 .nav {
     background-color: #363231; /* Tailwind color for slate-400 */
-    height: 14rem; /* Equivalent to h-40 */
+    height: 7rem; /* Equivalent to h-40 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@
      /* Equivalent to pt-10 */
     font-size: 1.4rem;
     position: absolute;
-    top:8%;
+    top:4%;
     left: 35%;
   }
   /* Logo styles */
@@ -34,7 +34,7 @@
     text-decoration: none;
     padding-left: 2.5rem;
     position: absolute;
-    top: 8%;
+    top: -2%;
     left:2%
   }
   
@@ -42,7 +42,7 @@
   .other-topics {
     position: absolute;
     list-style: none;
-    top: 10%;
+    top: 5%;
     left:85%;
     margin: 0;
     display: flex;

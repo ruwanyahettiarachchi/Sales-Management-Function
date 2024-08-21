@@ -39,56 +39,6 @@ export const signin =async(req,res,next)=>{
 }
 
 
-//item register
-export const itemadd=async(req,res,next)=>{
-    const {userId,productName,category,unitPrice,quantity,itemPicture,alternateItemPicture}=req.body;
-
-    //create auto id for orderid
-    function idGen(userId){
-        const randomString=Math.random().toString(36).substring(2,10);
-        const id='ORD'+randomString+userId;
-        return id;
-    }
-    const petId=idGen(userId)
-   
-
-    const newItem=new Item({petId,userId,productName,category,unitPrice,quantity,itemPicture,alternateItemPicture});
-    try{
-        await newItem.save();
-        res.status(202).json({message:"item created successfully"});
-    }catch(error){
-        next(error);
-    }
-   
-}
-
-//get items by userid
-export const getOrdersByCustomerId = async (req, res, next) => {
-    try{
-       const customerId=req.params.id;
-        const orders=await Item.find({userId:customerId})
-        res.json(orders)
-    }catch(error){
-        console.log(error)
-        res.status(500).json({error:'Internal server error'})
-    }
-};
-
-
-//all items
-export const allitems = async (req, res, next) => {
-    try{
-    
-        const orders=await Item.find({})
-        res.json(orders)
-    }catch(error){
-        console.log(error)
-        res.status(500).json({error:'Internal server error'})
-    }
-};
-
-
-
 export const google=async(req,res,next)=>{
     try{
         const user=await User.findOne({email:req.body.email})
@@ -175,3 +125,109 @@ export const google1 = async (req, res, next) => {
 export const signout=(req,res)=>{
     res.clearCookie('access_token').status(200).json('Signout Success')
 }
+
+
+
+
+
+//item add
+export const itemadd=async(req,res,next)=>{
+    const {userId,productName,category,unitPrice,quantity,itemPicture,alternateItemPicture}=req.body;
+
+    //create auto id for orderid
+    function idGen(userId){
+        const randomString=Math.random().toString(36).substring(2,10);
+        const id='ORD'+randomString+userId;
+        return id;
+    }
+    const petId=idGen(userId)
+   
+
+    const newItem=new Item({petId,userId,productName,category,unitPrice,quantity,itemPicture,alternateItemPicture});
+    try{
+        await newItem.save();
+        res.status(202).json({message:"item created successfully"});
+    }catch(error){
+        next(error);
+    }
+   
+}
+
+//get items by userid
+export const getOrdersByCustomerId = async (req, res, next) => {
+    try{
+       const customerId=req.params.id;
+        const orders=await Item.find({userId:customerId})
+        res.json(orders)
+    }catch(error){
+        console.log(error)
+        res.status(500).json({error:'Internal server error'})
+    }
+};
+
+
+//all items
+export const allitems = async (req, res, next) => {
+    try{
+    
+        const orders=await Item.find({})
+        res.json(orders)
+    }catch(error){
+        console.log(error)
+        res.status(500).json({error:'Internal server error'})
+    }
+};
+
+
+
+
+
+
+
+//discount add
+export const discountadd=async(req,res,next)=>{
+    const {userId,itemCategory,discount,promoCode}=req.body;
+
+    //create auto id for discountid
+    function idGen(userId){
+        const randomString=Math.random().toString(36).substring(2,10);
+        const id='ORD'+randomString+userId;
+        return id;
+    }
+    const discountId=idGen(userId)
+   
+
+    const newDiscount=new Item({discountId,itemCategory,discount,promoCode});
+    try{
+        await newItem.save();
+        res.status(202).json({message:"discount generated successfully"});
+    }catch(error){
+        next(error);
+    }
+   
+}
+
+//get discounts by userid
+export const getDiscountsByCustomerId = async (req, res, next) => {
+    try{
+       const customerId=req.params.id;
+        const discounts=await Item.find({userId:customerId})
+        res.json(discounts)
+    }catch(error){
+        console.log(error)
+        res.status(500).json({error:'Internal server error'})
+    }
+};
+
+
+//all discounts
+export const alldiscounts = async (req, res, next) => {
+    try{
+    
+        const discounts=await Item.find({})
+        res.json(discounts)
+    }catch(error){
+        console.log(error)
+        res.status(500).json({error:'Internal server error'})
+    }
+};

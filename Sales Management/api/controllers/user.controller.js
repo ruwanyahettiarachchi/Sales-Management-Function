@@ -1,5 +1,6 @@
 import User from "../models/user.model.js"
 import Item from "../models/item.model.js"
+import Discount from "../models/discount.model.js"
 import { errorHandler } from "../utils/error.js"
 import bcryptjs from 'bcryptjs';
 
@@ -51,22 +52,18 @@ export const deleteUser=async(req,res,next)=>{
     }
 }
 
-
-
-
-
-//
-
-
-
-
-
 export const test1 = (req, res) => {
     res.json({
         message: 'API is working'
     });
 }
 
+
+
+
+
+
+//Item
 
 export const updateItem =async(req,res)=>{
     const {id,...rest}=req.body
@@ -79,26 +76,24 @@ export const deleteItem = async (req, res, next) => {
     console.log(petId)
     try {
         await Item.findByIdAndDelete(petId);
-        res.status(200).json('The Order has been deleted');
+        res.status(200).json('The item has been deleted');
     } catch (error) {
         next(error);
     }
 }
 
 
-
-
 export const getItem= async (req, res) => {
     const id = req.params.id;
 
     try {
-        const discount = await Item.findById(id);
+        const item = await Item.findById(id);
 
-        if (!discount) {
-            return res.status(404).send({ success: false, message: "User not found" });
+        if (!item) {
+            return res.status(404).send({ success: false, message: "Item not found" });
         }
 
-        res.send({ success: true, message: "User fetched successfully", data: discount });
+        res.send({ success: true, message: "Item fetched successfully", data: discount });
     } catch (error) {
         console.error(error);
         res.status(500).send({ success: false, message: "Internal Server Error" });
@@ -108,5 +103,43 @@ export const getItem= async (req, res) => {
 
 
 
-     
+
+
+
+//Discount
+
+export const updateDiscount =async(req,res)=>{
+    const {id,...rest}=req.body
+    const data=await Discount.updateOne({_id:id},rest)
+    res.send({success:true,message:"updated successfuly",data:data})
+}
+
+export const deleteDiscount = async (req, res, next) => {
+    let discountId=req.params.id;
+    console.log(discountId)
+    try {
+        await Discount.findByIdAndDelete(discountId);
+        res.status(200).json('The discount has been removed');
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+export const getDiscount= async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const discount = await Discount.findById(id);
+
+        if (!discount) {
+            return res.status(404).send({ success: false, message: "Item not found" });
+        }
+
+        res.send({ success: true, message: "discount fetched successfully", data: discount });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ success: false, message: "Internal Server Error" });
+    }
+};
 
