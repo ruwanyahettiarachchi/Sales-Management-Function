@@ -151,7 +151,7 @@ export default function Profile() {
       <div className='flex justify-between mt-5'>
         <span onClick={handledeleteAccount} className='user-profile-delete-button'>Close Account</span>
         <span onClick={handleSignOut}className='user-profile-signout-button'>Sign Out</span>
-        <Link className='navigate-button-additem' to='/additem'><li>List Pet for Sale</li></Link> 
+        <Link className='navigate-button-additem' to='/additem'><li>Add Item</li></Link> 
         <Link className='my-items-button' to='/items'><li>My Inventory</li></Link> 
       </div>
         <p className='user-profile-errors-button'>{error && 'Something went wrong'}</p>

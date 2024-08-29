@@ -5,6 +5,9 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { getDownloadURL, ref } from 'firebase/storage';
 import { storage } from '../firebase';
 import logo from './css/delete-icon.png';
+import './css/allDetails.css'
+import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Importing icons
+
 
 export default function ManagerAllDetails() {
   const [orders, setOrders] = useState([]);
@@ -76,14 +79,14 @@ export default function ManagerAllDetails() {
 
   return (
     <div className="p-4">
-      <div id="admin-page-names" className="flex justify-between mb-4">
+      {/* <div id="admin-page-names" className="flex justify-between mb-4">
         <Link id="add-task-page-btn" to="/AdminAllTask">
           All Task
         </Link>
         <Link id="all-task-page-btn" to="/AddTask">
           Add Task
         </Link>
-      </div>
+      </div> */}
 
       <div className="overflow-x-auto">
         <h2 className="my-8 text-center font-bold text-4xl text-gray-800">Available Items</h2>
@@ -105,7 +108,6 @@ export default function ManagerAllDetails() {
                   {/* Table Cells */}
                   <Table.Cell>{order.productName}</Table.Cell>
                   <Table.Cell>{order.category}</Table.Cell>
-                  <Table.Cell>{order.lastName}</Table.Cell>
                   <Table.Cell>{order.unitPrice}</Table.Cell>
                   <Table.Cell>{order.quantity}</Table.Cell>
                   <Table.Cell>
@@ -114,8 +116,7 @@ export default function ManagerAllDetails() {
                         <img src={order.itemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
                       )}
                     </div>
-                  </Table.Cell>
-                  <Table.Cell>
+                  
                     <div className="flex gap-2">
                       {order.alternateItemPicture && (
                         <img src={order.alternateItemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
@@ -123,14 +124,17 @@ export default function ManagerAllDetails() {
                     </div>
                   </Table.Cell>
                   <Table.Cell>
-                    <Button id="al-details-delete-btn" onClick={() => {
-                      setShowModal(true);
-                      setOrderIdToDelete(order._id);
-                    }}>
-                      <img src={logo} alt='logo' width="10%" height="10%"></img>
-                    </Button>
-                    <button>Edit</button>
-                  </Table.Cell>
+  <Button id="al-details-delete-btn" onClick={() => {
+    setShowModal(true);
+    setOrderIdToDelete(order._id);
+  }}>
+    <FaTrashAlt />
+  </Button>
+  <Button>
+    <FaEdit />
+  </Button>
+</Table.Cell>
+
                 </Table.Row>
               ))}
             </Table.Body>
