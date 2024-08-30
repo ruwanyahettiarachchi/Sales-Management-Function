@@ -1,0 +1,95 @@
+/* Container Styles */
+.p-4 {
+    padding: 1rem;
+  }
+  
+  /* Page Title */
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.25rem; /* 4xl */
+    color: #2d3748; /* Gray 800 */
+  }
+  
+  /* Table Styles */
+  #all-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f9fafb; /* Gray 50 */
+  }
+  
+  #all-details-table-head {
+    background-color: #2d3748; /* Gray 800 */
+    color: #f9fafb; /* Gray 50 */
+  }
+  
+  #all-details-table-head th {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #e2e8f0; /* Gray 200 */
+  }
+  
+  #discount-details-table-body tr {
+    border-bottom: 1px solid #e2e8f0; /* Gray 200 */
+  }
+  
+  #discount-details-table-body tr:hover {
+    background-color: #edf2f7; /* Gray 100 */
+  }
+  
+  #discount-details-table-body td {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    color: #4a5568; /* Gray 600 */
+  }
+  
+  /* Action Button Styles */
+  #all-details-delete-btn,
+  #edit-btn {
+    margin-right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    color: #fff;
+    
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+
+  
+  #all-details-delete-btn:hover {
+    background-color: #c53030; /* Red 600 */
+  }
+  
+  
+  
+  
+  /* No Discounts Message */
+  p {
+    text-align: center;
+    color: #4a5568; /* Gray 600 */
+    margin-top: 2rem;
+    font-size: 1.25rem; /* lg */
+  }
+  
+  /* Modal Styles */
+  /* You can uncomment and style the modal as per your needs */
+  .text-center-alert {
+    text-align: center;
+  }
+  
+  .text-center-alert h3 {
+    font-size: 1.5rem;
+    color: #e53e3e; /* Red 600 */
+  }
+  
+  .modal-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  

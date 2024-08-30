@@ -126,7 +126,7 @@ export default function AddItem() {
       }
 
       alert('Item added successfully');
-      navigate('/items');
+      navigate('/');
     } catch (error) {
       setError('Something went wrong!');
     }

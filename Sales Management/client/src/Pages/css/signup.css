@@ -1,0 +1,88 @@
+/* SignUp CSS */
+
+/* Container styles */
+.signup-container {
+    padding: 2rem; /* Equivalent to p-3 */
+    max-width: 28rem; /* Equivalent to max-w-lg */
+    margin: 0 auto; /* Centering the container */
+    background-color: #f9fafb; /* Light background color for the container */
+    border-radius: 0.5rem; /* Rounded corners for the container */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Header styles */
+.signup-header {
+    font-size: 2rem; /* Equivalent to text-3xl */
+    text-align: center; /* Center the text */
+    font-weight: 600; /* Equivalent to font-semibold */
+    margin-bottom: 1.75rem; /* Equivalent to my-7 */
+    color: #1f2937; /* Dark gray text color */
+}
+
+/* Form styles */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Equivalent to gap-4 */
+}
+
+/* Input styles */
+.signup-input {
+    background-color: #e5e7eb; /* Equivalent to bg-slate-100 */
+    padding: 0.75rem; /* Equivalent to p-3 */
+    border-radius: 0.5rem; /* Rounded corners for the input */
+    border: 1px solid #d1d5db; /* Subtle border for inputs */
+    font-size: 1rem; /* Input text size */
+    color: #374151; /* Dark gray text color */
+}
+
+.signup-input:focus {
+    outline: none;
+    border-color: #2563eb; /* Blue border on focus */
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5); /* Blue shadow on focus */
+}
+
+/* Button styles */
+.signup-button {
+    background-color: #1f2937; /* Equivalent to bg-slate-700 */
+    color: #ffffff; /* White text */
+    padding: 0.75rem; /* Equivalent to p-3 */
+    border-radius: 0.5rem; /* Rounded corners for the button */
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: 700; /* Bold text */
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.signup-button:hover {
+    opacity: 0.95;
+}
+
+.signup-button:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+/* OAuth styles */
+.oauth-container {
+    margin-top: 1.5rem; /* Space above OAuth component */
+}
+
+/* Additional text styles */
+.signup-text {
+    text-align: center; /* Center the text */
+    color: #1f2937; /* Dark gray text color */
+    margin-top: 1.5rem; /* Space above the text */
+}
+
+.signup-link {
+    color: #2563eb; /* Blue text for the link */
+    font-weight: 500; /* Medium weight for emphasis */
+    cursor: pointer;
+}
+
+.signup-error {
+    color: #b91c1c; /* Red color for error messages */
+    margin-top: 1.25rem; /* Space above the error message */
+    text-align: center; /* Center the error message */
+}

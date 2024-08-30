@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Modal, Table } from 'flowbite-react';
-
 import { getDownloadURL, ref } from 'firebase/storage';
 import { storage } from '../firebase';
-
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Importing icons
+import './discountDetails.css'; 
 
 export default function ManagerDiscountDetails() {
   const [orders, setOrders] = useState([]);
@@ -24,8 +23,6 @@ export default function ManagerDiscountDetails() {
       }
       const data = await response.json();
       setOrders(data);
-
-      // Fetch images from Firebase for each order
      
     } catch (error) {
       console.error('Error fetching orders:', error);
