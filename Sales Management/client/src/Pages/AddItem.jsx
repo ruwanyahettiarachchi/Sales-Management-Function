@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { app } from '../firebase';
 import { useSelector } from 'react-redux';
 import { getStorage, uploadBytesResumable, ref, getDownloadURL } from 'firebase/storage';
-import './css/addpet.css';
+import './css/additem.css';
 
 export default function AddItem() {
   const [imagePercent, setImagePercent] = useState(0);
@@ -73,6 +73,14 @@ export default function AddItem() {
     fileRef2.current.click();
   };
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -102,7 +110,20 @@ export default function AddItem() {
       <h1>Add Item</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Product Name' onChange={(e) => setFormData({ ...formData, productName: e.target.value })} />
-        <input type="text" placeholder='Category' onChange={(e) => setFormData({ ...formData, category: e.target.value })} />
+        <select
+          name="category"
+          value={formData.category}
+          onChange={handleChange}
+          className="category-dropdown"
+        >
+          <option value="">Select Category</option>
+          <option value="trousers">Trousers</option>
+          <option value="jeans">Jeans</option>
+          <option value="frocks">Frocks</option>
+          <option value="tops">Tops</option>
+          <option value="tshirts">T-Shirts</option>
+        </select>
+
         <input type="text" placeholder='Unit price' onChange={(e) => setFormData({ ...formData, unitPrice: e.target.value })} />
         <input type="text" placeholder='Quantity' onChange={(e) => setFormData({ ...formData, quantity: e.target.value })} />
 

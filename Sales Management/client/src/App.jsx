@@ -13,6 +13,7 @@ import AllDetails from './Pages/AllDetails';
 import UpdateItem from './Pages/UpdateItem';
 import OnePetShow from './Pages/OnePetShow'
 import ManagerAllDetails from './Pages/AllDetails';
+import AddDiscount from './discount Component/AddDiscount';
 
 
 
@@ -35,6 +36,9 @@ export default function App() {
     <Route path="/profile" element={<Profile/>}></Route>
     <Route path="/items" element={<ItemProfile/>}></Route>
     <Route path="/update-item/:id" element={<UpdateItem/>}></Route>
+
+    <Route path="/addDiscount" element={<AddDiscount/>}></Route>
+
 
 
     </Route>

@@ -1,6 +1,17 @@
 import mongoose from "mongoose";
 
 const discountSchema = new mongoose.Schema({
+    petId: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    userId: {
+        type: String,
+        required: true,
+        trim: true
+    },
     discountId: {
         type: String,
         required: true,

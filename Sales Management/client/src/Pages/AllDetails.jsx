@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Modal, Table } from 'flowbite-react';
-import { HiOutlineExclamationCircle } from "react-icons/hi";
+
 import { getDownloadURL, ref } from 'firebase/storage';
 import { storage } from '../firebase';
-import logo from './css/delete-icon.png';
+
 import './css/allDetails.css'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Importing icons
-
 
 export default function ManagerAllDetails() {
   const [orders, setOrders] = useState([]);
@@ -108,6 +107,7 @@ export default function ManagerAllDetails() {
                   {/* Table Cells */}
                   <Table.Cell>{order.productName}</Table.Cell>
                   <Table.Cell>{order.category}</Table.Cell>
+                  <Table.Cell>{order.lastName}</Table.Cell>
                   <Table.Cell>{order.unitPrice}</Table.Cell>
                   <Table.Cell>{order.quantity}</Table.Cell>
                   <Table.Cell>
@@ -116,7 +116,8 @@ export default function ManagerAllDetails() {
                         <img src={order.itemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
                       )}
                     </div>
-                  
+                  </Table.Cell>
+                  <Table.Cell>
                     <div className="flex gap-2">
                       {order.alternateItemPicture && (
                         <img src={order.alternateItemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
@@ -124,16 +125,16 @@ export default function ManagerAllDetails() {
                     </div>
                   </Table.Cell>
                   <Table.Cell>
-  <Button id="al-details-delete-btn" onClick={() => {
-    setShowModal(true);
-    setOrderIdToDelete(order._id);
-  }}>
-    <FaTrashAlt />
-  </Button>
-  <Button>
-    <FaEdit />
-  </Button>
-</Table.Cell>
+                      <Button id="al-details-delete-btn" onClick={() => {
+                        setShowModal(true);
+                        setOrderIdToDelete(order._id);
+                      }}>
+                        <FaTrashAlt />
+                      </Button>
+                      <Button>
+                        <FaEdit />
+                      </Button>
+                    </Table.Cell>
 
                 </Table.Row>
               ))}
@@ -143,7 +144,7 @@ export default function ManagerAllDetails() {
           <p>You have no orders yet!</p>
         )}
 
-        <Modal show={showModal} onClose={() => setShowModal(false)} popup size='md'>
+        {/* <Modal show={showModal} onClose={() => setShowModal(false)} popup size='md'>
           <Modal.Header />
           <Modal.Body>
             <div className="text-center-alert">
@@ -159,7 +160,7 @@ export default function ManagerAllDetails() {
               </Button>
             </div>
           </Modal.Body>
-        </Modal>
+        </Modal> */}
       </div>
     </div>
   );

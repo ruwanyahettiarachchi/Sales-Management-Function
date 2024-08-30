@@ -1,5 +1,5 @@
 import express from 'express'
-import { signin, signup,google,signout,itemadd,getOrdersByCustomerId,allitems,google1, alldiscounts, getDiscountsByCustomerId, discountadd } from '../controllers/auth.controller.js';
+import { signin, signup,google,signout,itemadd,getOrdersByCustomerId,allitems,google1, alldiscounts, getDiscountsByManagerId, discountadd } from '../controllers/auth.controller.js';
 
 
 const router=express.Router();
@@ -17,8 +17,8 @@ router.get("/managers/items",allitems)
 
 //discount
 router.post("/discountadd",discountadd)
-router.get("/user/:id",getDiscountsByCustomerId)//for data fetch user id
-router.get("/managers/items",alldiscounts)
+router.get("/user/:id",getDiscountsByManagerId)//for data fetch user id
+router.get("/managers/discounts",alldiscounts)
 
 
 export default router

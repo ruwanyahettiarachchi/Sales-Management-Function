@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import Item from "../models/item.model.js";
+import Discount from "../models/discount.model.js";
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from "../utils/error.js";
 import jwt from 'jsonwebtoken'
@@ -197,7 +198,7 @@ export const discountadd=async(req,res,next)=>{
     const discountId=idGen(userId)
    
 
-    const newDiscount=new Item({discountId,itemCategory,discount,promoCode});
+    const newDiscount=new Discount({petId,userId,discountId,itemCategory,discount,promoCode});
     try{
         await newItem.save();
         res.status(202).json({message:"discount generated successfully"});
@@ -208,10 +209,10 @@ export const discountadd=async(req,res,next)=>{
 }
 
 //get discounts by userid
-export const getDiscountsByCustomerId = async (req, res, next) => {
+export const getDiscountsByManagerId = async (req, res, next) => {
     try{
-       const customerId=req.params.id;
-        const discounts=await Item.find({userId:customerId})
+       const ManagerId=req.params.id;
+        const discounts=await Discount.find({userId:ManagerId})
         res.json(discounts)
     }catch(error){
         console.log(error)
@@ -224,7 +225,7 @@ export const getDiscountsByCustomerId = async (req, res, next) => {
 export const alldiscounts = async (req, res, next) => {
     try{
     
-        const discounts=await Item.find({})
+        const discounts=await Discount.find({})
         res.json(discounts)
     }catch(error){
         console.log(error)
