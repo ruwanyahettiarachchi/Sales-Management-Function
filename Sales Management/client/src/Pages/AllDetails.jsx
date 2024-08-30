@@ -116,8 +116,7 @@ export default function ManagerAllDetails() {
                         <img src={order.itemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
                       )}
                     </div>
-                  </Table.Cell>
-                  <Table.Cell>
+                  
                     <div className="flex gap-2">
                       {order.alternateItemPicture && (
                         <img src={order.alternateItemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
@@ -135,7 +134,7 @@ export default function ManagerAllDetails() {
 
                   
                       <Link to={`/update-items/${order._id}`}>
-                    <Button id='edit-btn' className="text-green-500"> <FaEdit /></Button>
+                    <Button id='edit-btn' > <FaEdit /></Button>
                   </Link>
                        
             

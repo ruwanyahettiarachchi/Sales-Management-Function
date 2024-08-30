@@ -11,12 +11,12 @@ import ItemProfile from './Pages/ItemProfile';
 
 
 
-import OnePetShow from './Pages/OnePetShow'
 import ManagerAllDetails from './Pages/AllDetails';
 import AddDiscount from './discount Component/AddDiscount';
 import UpdateItemDetails from './Pages/UpdateItem';
 import ManagerDiscountDetails from './discount Component/AllDiscounts';
 import UpdateDiscountDetails from './discount Component/UpdateDiscount';
+import SingleItemView from './Pages/SingleItemView';
 
 
 
@@ -33,7 +33,7 @@ export default function App() {
     <Route path="/additem" element={<AddItem/>}></Route>
     <Route path="/sign-up" element={<SignUp/>}></Route>
    
-    <Route path="/onepet/:id" element={<OnePetShow/>}></Route>
+    <Route path="/singleitemview/:id" element={<SingleItemView/>}></Route>
  
     <Route element={<PrivateRoutes/>}>
     <Route path="/profile" element={<Profile/>}></Route>

@@ -9,7 +9,7 @@ import { getStorage, uploadBytesResumable, ref, getDownloadURL } from 'firebase/
 
 import './css/OnePetShow.css'
 
-function OnePetShow() {
+function SingleItemView() {
   const [imagePercent, setImagePercent] = useState(0);
     const navigate=useNavigate();
     const { id } = useParams();
@@ -17,17 +17,13 @@ function OnePetShow() {
     const fileRef2 = useRef(null);
     const [image1, setImage1] = useState(undefined);
     const [image2, setImage2] = useState(undefined);
-    const [updatediscount,setupdatediscount]=useState({
-      petname:"",
-      species:"",
-      breed:"",
-      age:"",
-      gender:"",
-      color:"",
-      weight:"",
-      profilePicture: "",
-    alternateProfilePicture: "",
-    price:""
+    const [updateitem,setupdateitem]=useState({
+      productName: "",
+      category: "",
+      unitPrice: "",
+      quantity: "",
+      itemPicture: "",
+      alternateItemPicture: "" 
         
         
     })
@@ -61,7 +57,7 @@ function OnePetShow() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setupdatediscount((prev) => ({
+            setupdateitem((prev) => ({
               ...prev,
               [field]: downloadURL
             }));
@@ -86,7 +82,7 @@ function OnePetShow() {
             console.log(data);
     
             if (data.success) {
-                setupdatediscount(data.data);
+                setupdateitem(data.data);
             } else {
               console.error(data.message);
             }
@@ -103,36 +99,24 @@ function OnePetShow() {
   return (
     <div className="container mx-auto p-6">
       <div className="bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-3xl font-bold mb-4 text-center">{updatediscount.petname}</h2>
+        <h2 className="text-3xl font-bold mb-4 text-center">{updateitem.productName}</h2>
         <div className="mb-4">
           <label className="block text-gray-700 font-semibold">Species:</label>
-          <p className="text-gray-900">{updatediscount.species}</p>
+          <p className="text-gray-900">{updateitem.category}</p>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-semibold">Breed:</label>
-          <p className="text-gray-900">{updatediscount.breed}</p>
+          <p className="text-gray-900">{updateitem.unitPrice}</p>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-semibold">Age:</label>
-          <p className="text-gray-900">{updatediscount.age}</p>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 font-semibold">Gender:</label>
-          <p className="text-gray-900">{updatediscount.gender}</p>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 font-semibold">Color:</label>
-          <p className="text-gray-900">{updatediscount.color}</p>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 font-semibold">Weight:</label>
-          <p className="text-gray-900">{updatediscount.weight}</p>
+          <p className="text-gray-900">{updateitem.quantity}</p>
         </div>
         <div className="text-center">
          
           <div className='flex justify-center items-center gap-4'>
-          <img  value={updatediscount.profilePicture } src={updatediscount.profilePicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Profile' className='h-20 w-20 self-center cursor-pointer object-cover border border-gray-300' onClick={handleImage1Click} />
-          <img  value={updatediscount.alternateProfilePicture } src={updatediscount.alternateProfilePicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Alternate Profile' className='h-20 w-20 self-center cursor-pointer object-cover border border-gray-300' onClick={handleImage2Click} />
+          <img  value={updatediscount.profilePicture } src={updateitem.itemPicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Profile' className='h-20 w-20 self-center cursor-pointer object-cover border border-gray-300' onClick={handleImage1Click} />
+          <img  value={updatediscount.alternateProfilePicture } src={updateitem.alternateItemPicture || 'https://media.istockphoto.com/id/1294866141/vector/picture-reload.jpg?s=612x612&w=is&k=20&c=Ei6q4n6VkP3B0R30d1VdZ4i11CFbyaEoAFy6_WEbArE='} alt='Alternate Profile' className='h-20 w-20 self-center cursor-pointer object-cover border border-gray-300' onClick={handleImage2Click} />
         </div>
        
         </div>
@@ -144,4 +128,4 @@ function OnePetShow() {
   );
 }
 
-export default OnePetShow;
+export default SingleItemView;

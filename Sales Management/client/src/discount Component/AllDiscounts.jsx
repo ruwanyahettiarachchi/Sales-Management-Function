@@ -66,7 +66,7 @@ export default function ManagerDiscountDetails() {
       </div> */}
 
       <div className="overflow-x-auto">
-        <h2 className="my-8 text-center font-bold text-4xl text-gray-800">Available Items</h2>
+        <h2 className="my-8 text-center font-bold text-4xl text-gray-800">Ongoing Discounts</h2>
 
         {orders.length > 0 ? (
           <Table hoverable id="all-details-table">

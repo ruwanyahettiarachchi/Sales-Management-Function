@@ -79,10 +79,37 @@ export default function AddItem() {
       [e.target.name]: e.target.value,
     });
   };
-  
+
+  const validateForm = () => {
+    const { productName, category, unitPrice, quantity, itemPicture } = formData;
+    if (!productName.trim()) {
+      setError('Product Name is required');
+      return false;
+    }
+    if (!category) {
+      setError('Category is required');
+      return false;
+    }
+    if (!unitPrice || isNaN(unitPrice) || parseFloat(unitPrice) <= 0) {
+      setError('Unit Price must be a positive number');
+      return false;
+    }
+    if (!quantity || isNaN(quantity) || parseInt(quantity) <= 0) {
+      setError('Quantity must be a positive integer');
+      return false;
+    }
+    if (!itemPicture) {
+      setError('Item Picture is required');
+      return false;
+    }
+    setError('');
+    return true;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
     setError('');
     try {
       const res = await fetch('/api/auth/itemadd', {
@@ -99,17 +126,22 @@ export default function AddItem() {
       }
 
       alert('Item added successfully');
+      navigate('/items');
     } catch (error) {
       setError('Something went wrong!');
     }
   };
 
-
   return (
     <div className="add-pet-container">
       <h1>Add Item</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='Product Name' onChange={(e) => setFormData({ ...formData, productName: e.target.value })} />
+        <input
+          type="text"
+          placeholder='Product Name'
+          name="productName"
+          onChange={handleChange}
+        />
         <select
           name="category"
           value={formData.category}
@@ -124,8 +156,18 @@ export default function AddItem() {
           <option value="tshirts">T-Shirts</option>
         </select>
 
-        <input type="text" placeholder='Unit price' onChange={(e) => setFormData({ ...formData, unitPrice: e.target.value })} />
-        <input type="text" placeholder='Quantity' onChange={(e) => setFormData({ ...formData, quantity: e.target.value })} />
+        <input
+          type="text"
+          placeholder='Unit price'
+          name="unitPrice"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder='Quantity'
+          name="quantity"
+          onChange={handleChange}
+        />
 
         <input type='file' ref={fileRef1} id='itemPicture' hidden accept='image/*' onChange={(e) => setImage1(e.target.files[0])} />
         <input type='file' ref={fileRef2} id='alternateItemPicture' hidden accept='image/*' onChange={(e) => setImage2(e.target.files[0])} />
@@ -140,7 +182,7 @@ export default function AddItem() {
             Upload Item Image 1
           </button>
           <button className="upload-button" type="button" onClick={handleImage2Click}>
-          Upload Item Image 2
+            Upload Item Image 2
           </button>
         </div>
 
@@ -160,7 +202,7 @@ export default function AddItem() {
         
       </form>
 
-      {error && <p>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }

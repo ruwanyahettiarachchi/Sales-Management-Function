@@ -8,10 +8,8 @@ export default function Header() {
     <div className="nav"> 
       <div className='navbardetails'>
         <Link to='/'><h1 className='twebpagename'>Sales Management</h1></Link> 
-        <h3 id='h3'>Discover Top Deals from Leading Marketplaces in Sri Lanka.</h3>
         <ul className='other-topics'>
-          <Link to='/'><li>Home</li></Link>  
-          
+          <Link to='/'><li>Home</li></Link>    
           <Link to='/about'><li>About</li></Link>
           <Link to='/addDiscount'><li>Add Discount</li></Link>
           <Link to='/profile'>
