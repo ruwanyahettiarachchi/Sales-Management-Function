@@ -5,10 +5,9 @@ import { Button, Modal, Table } from 'flowbite-react';
 import { getDownloadURL, ref } from 'firebase/storage';
 import { storage } from '../firebase';
 
-import './css/allDetails.css'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Importing icons
 
-export default function ManagerAllDetails() {
+export default function ManagerDiscountDetails() {
   const [orders, setOrders] = useState([]);
   const [orderIdToDelete, setOrderIdToDelete] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -19,9 +18,9 @@ export default function ManagerAllDetails() {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch(`/api/auth/allitems`);
+      const response = await fetch(`/api/auth/alldiscounts`);
       if (!response.ok) {
-        throw new Error('Failed to fetch orders');
+        throw new Error('Failed to fetch details');
       }
       const data = await response.json();
       setOrders(data);
@@ -94,51 +93,35 @@ export default function ManagerAllDetails() {
           <Table hoverable id="all-details-table">
             <Table.Head id="all-details-table-head">
               {/* Table Headings */}
-              <Table.HeadCell>Product Name</Table.HeadCell>
-              <Table.HeadCell>category</Table.HeadCell>
-              <Table.HeadCell>Unit price</Table.HeadCell>
-              <Table.HeadCell>Quantity</Table.HeadCell>
-              <Table.HeadCell>Photos</Table.HeadCell>
+              <Table.HeadCell>Discount ID</Table.HeadCell>
+              <Table.HeadCell>Item Category</Table.HeadCell>
+              <Table.HeadCell>Discount percentage</Table.HeadCell>
+              <Table.HeadCell>Promo Code</Table.HeadCell>
               <Table.HeadCell>Action</Table.HeadCell>
             </Table.Head>
-            <Table.Body id="all-details-table-body">
-              {orders.map((order) => (
-                <Table.Row key={order._id}>
+            <Table.Body id="discount-details-table-body">
+              {orders.map((discount) => (
+                <Table.Row key={discount._id}>
                   {/* Table Cells */}
-                  <Table.Cell>{order.productName}</Table.Cell>
-                  <Table.Cell>{order.category}</Table.Cell>
+                  <Table.Cell>{discount.productName}</Table.Cell>
+                  <Table.Cell>{discount.category}</Table.Cell>
               
-                  <Table.Cell>{order.unitPrice}</Table.Cell>
-                  <Table.Cell>{order.quantity}</Table.Cell>
-                  <Table.Cell>
-                    <div className="flex gap-2">
-                      {order.itemPicture && (
-                        <img src={order.itemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
-                      )}
-                    </div>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <div className="flex gap-2">
-                      {order.alternateItemPicture && (
-                        <img src={order.alternateItemPicture} alt="Profile" className="h-12 w-12 object-cover rounded" />
-                      )}
-                    </div>
-                  </Table.Cell>
+                  <Table.Cell>{discount.unitPrice}</Table.Cell>
+                  <Table.Cell>{discount.quantity}</Table.Cell>
                   <Table.Cell>
                       <Button id="al-details-delete-btn" onClick={() => {
                         setShowModal(true);
-                        setOrderIdToDelete(order._id);
+                        setOrderIdToDelete(discount._id);
                       }}>
                         <FaTrashAlt />
                       </Button>
 
 
                   
-                      <Link to={`/update-items/${order._id}`}>
+                      <Link to={`/updatediscount/${discount._id}`}>
                     <Button id='edit-btn' className="text-green-500"> <FaEdit /></Button>
                   </Link>
-                       
-            
+        
                     </Table.Cell>
 
                 </Table.Row>
@@ -146,7 +129,7 @@ export default function ManagerAllDetails() {
             </Table.Body>
           </Table>
         ) : (
-          <p>You have no orders yet!</p>
+          <p>You have no discounts added yet!</p>
         )}
 
         {/* <Modal show={showModal} onClose={() => setShowModal(false)} popup size='md'>

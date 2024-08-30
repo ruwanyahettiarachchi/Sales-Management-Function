@@ -154,17 +154,9 @@ export const itemadd=async(req,res,next)=>{
    
 }
 
-//get items by userid
-export const getOrdersByCustomerId = async (req, res, next) => {
-    try{
-       const customerId=req.params.id;
-        const orders=await Item.find({userId:customerId})
-        res.json(orders)
-    }catch(error){
-        console.log(error)
-        res.status(500).json({error:'Internal server error'})
-    }
-};
+
+
+
 
 
 //all items
@@ -207,18 +199,6 @@ export const discountadd=async(req,res,next)=>{
     }
    
 }
-
-//get discounts by userid
-export const getDiscountsByManagerId = async (req, res, next) => {
-    try{
-       const ManagerId=req.params.id;
-        const discounts=await Discount.find({userId:ManagerId})
-        res.json(discounts)
-    }catch(error){
-        console.log(error)
-        res.status(500).json({error:'Internal server error'})
-    }
-};
 
 
 //all discounts

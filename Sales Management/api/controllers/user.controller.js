@@ -93,7 +93,7 @@ export const getItem= async (req, res) => {
             return res.status(404).send({ success: false, message: "Item not found" });
         }
 
-        res.send({ success: true, message: "Item fetched successfully", data: discount });
+        res.send({ success: true, message: "Item fetched successfully", data: item });
     } catch (error) {
         console.error(error);
         res.status(500).send({ success: false, message: "Internal Server Error" });

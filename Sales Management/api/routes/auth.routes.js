@@ -1,6 +1,7 @@
 import express from 'express'
-import { signin, signup,google,signout,itemadd,getOrdersByCustomerId,allitems,google1, alldiscounts, getDiscountsByManagerId, discountadd } from '../controllers/auth.controller.js';
-
+import { signin, signup,google,signout,itemadd,allitems,google1, alldiscounts, discountadd } from '../controllers/auth.controller.js';
+import { test, updateUser,deleteUser,updateItem,deleteItem,getItem } from '../controllers/user.controller.js';
+import { verifyToken } from '../utils/verifyUser.js';
 
 const router=express.Router();
 
@@ -12,12 +13,12 @@ router.get('/signout',signout)
 
 //items
 router.post("/itemadd",itemadd)
-router.get("/user/:id",getOrdersByCustomerId)//for data fetch user id
-router.get("/managers/items",allitems)
+
+router.get("/allitems",allitems)
 
 //discount
 router.post("/discountadd",discountadd)
-router.get("/user/:id",getDiscountsByManagerId)//for data fetch user id
+//for data fetch user id
 router.get("/managers/discounts",alldiscounts)
 
 
