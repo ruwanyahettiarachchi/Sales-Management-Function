@@ -113,7 +113,7 @@ function UpdateItemDetails() {
       if (data.success) {
         console.log('Item updated successfully');
         alert("Updated successfully");
-        navigate('/items');
+        navigate('/');
       } else {
         console.error(data.message);
       }

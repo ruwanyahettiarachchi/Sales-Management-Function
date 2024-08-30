@@ -48,6 +48,7 @@ export default function AddDiscount() {
       }
 
       alert('Item added successfully');
+      navigate('/allDiscount')
     } catch (error) {
       setError('Something went wrong!');
     }

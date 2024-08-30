@@ -12,14 +12,14 @@ router.delete("/delete/:id",verifyToken,deleteUser)
 //items
 router.delete("/deleteitem/:id",deleteItem)
 router.get('/getitem/:id', getItem);//for update fetch data
-router.put("/updateitem",verifyToken,updateItem)
+router.put("/updateitem",updateItem)
 
 
 
 //discounts
 router.delete("/deletediscount/:id",deleteDiscount)
 router.get('/getdiscount/:id', getDiscount);//for update fetch data
-router.put("/updatediscount",verifyToken,updateDiscount)
+router.put("/updatediscount",updateDiscount)
 
 
 

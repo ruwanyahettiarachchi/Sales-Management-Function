@@ -179,7 +179,7 @@ export const allitems = async (req, res, next) => {
 
 //discount add
 export const discountadd=async(req,res,next)=>{
-    const {userId,itemCategory,discount,promoCode}=req.body;
+    const {userId,discountId,itemCategory,discount,promoCode}=req.body;
 
     //create auto id for discountid
     function idGen(userId){
@@ -187,12 +187,12 @@ export const discountadd=async(req,res,next)=>{
         const id='ORD'+randomString+userId;
         return id;
     }
-    const discountId=idGen(userId)
+    const petId=idGen(userId)
    
 
     const newDiscount=new Discount({petId,userId,discountId,itemCategory,discount,promoCode});
     try{
-        await newItem.save();
+        await newDiscount.save();
         res.status(202).json({message:"discount generated successfully"});
     }catch(error){
         next(error);

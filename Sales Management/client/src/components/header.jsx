@@ -11,7 +11,9 @@ export default function Header() {
         <h3 id='h3'>Discover Top Deals from Leading Marketplaces in Sri Lanka.</h3>
         <ul className='other-topics'>
           <Link to='/'><li>Home</li></Link>  
+          
           <Link to='/about'><li>About</li></Link>
+          <Link to='/addDiscount'><li>Add Discount</li></Link>
           <Link to='/profile'>
             {currentUser ? (
               <img src={currentUser.profilePicture} alt='Profile' className='h-7 w-7 rounded-full object-cover'></img>
@@ -19,6 +21,7 @@ export default function Header() {
               <li>Sign In</li>
             )}
           </Link>  
+
         </ul>
       </div>   
     </div>

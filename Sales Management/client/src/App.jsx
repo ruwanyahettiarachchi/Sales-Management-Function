@@ -15,6 +15,8 @@ import OnePetShow from './Pages/OnePetShow'
 import ManagerAllDetails from './Pages/AllDetails';
 import AddDiscount from './discount Component/AddDiscount';
 import UpdateItemDetails from './Pages/UpdateItem';
+import ManagerDiscountDetails from './discount Component/AllDiscounts';
+import UpdateDiscountDetails from './discount Component/UpdateDiscount';
 
 
 
@@ -39,8 +41,9 @@ export default function App() {
     <Route path="/update-items/:id" element={<UpdateItemDetails/>}></Route>
 
     <Route path="/addDiscount" element={<AddDiscount/>}></Route>
+    <Route path="/allDiscount" element={<ManagerDiscountDetails/>}></Route>
 
-
+    <Route path="/updatediscount/:id" element={<UpdateDiscountDetails/>}></Route>
 
     </Route>
  

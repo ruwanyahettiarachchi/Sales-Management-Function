@@ -18,7 +18,7 @@ export default function ManagerDiscountDetails() {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch(`/api/auth/alldiscounts`);
+      const response = await fetch(`/api/auth/discounts`);
       if (!response.ok) {
         throw new Error('Failed to fetch details');
       }
@@ -26,33 +26,12 @@ export default function ManagerDiscountDetails() {
       setOrders(data);
 
       // Fetch images from Firebase for each order
-      data.forEach(order => {
-        if (order.itemPicture) {
-          fetchFirebaseImage(order.itemPicture, 'profilePicture', order._id);
-        }
-      });
+     
     } catch (error) {
       console.error('Error fetching orders:', error);
     }
   };
 
-  const fetchFirebaseImage = async (imageUrl, field, orderId) => {
-    const storageRef = ref(storage, imageUrl);
-    try {
-      const downloadUrl = await getDownloadURL(storageRef);
-      setOrders(prevOrders => prevOrders.map(order => {
-        if (order._id === orderId) {
-          return {
-            ...order,
-            [field]: downloadUrl
-          };
-        }
-        return order;
-      }));
-    } catch (error) {
-      console.error(`Error fetching image from Firebase for ${field}:`, error);
-    }
-  };
 
   const handleDeleteOrder = async () => {
     try {
@@ -103,11 +82,11 @@ export default function ManagerDiscountDetails() {
               {orders.map((discount) => (
                 <Table.Row key={discount._id}>
                   {/* Table Cells */}
-                  <Table.Cell>{discount.productName}</Table.Cell>
-                  <Table.Cell>{discount.category}</Table.Cell>
-              
-                  <Table.Cell>{discount.unitPrice}</Table.Cell>
-                  <Table.Cell>{discount.quantity}</Table.Cell>
+                  <Table.Cell>{discount.discountId}</Table.Cell>
+                  <Table.Cell>{discount.itemCategory}</Table.Cell>
+                  <Table.Cell>{discount.discount}</Table.Cell>
+                  <Table.Cell>{discount.promoCode}</Table.Cell>
+
                   <Table.Cell>
                       <Button id="al-details-delete-btn" onClick={() => {
                         setShowModal(true);
@@ -116,14 +95,10 @@ export default function ManagerDiscountDetails() {
                         <FaTrashAlt />
                       </Button>
 
-
-                  
                       <Link to={`/updatediscount/${discount._id}`}>
                     <Button id='edit-btn' className="text-green-500"> <FaEdit /></Button>
                   </Link>
-        
                     </Table.Cell>
-
                 </Table.Row>
               ))}
             </Table.Body>

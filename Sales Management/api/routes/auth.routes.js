@@ -18,8 +18,7 @@ router.get("/allitems",allitems)
 
 //discount
 router.post("/discountadd",discountadd)
-//for data fetch user id
-router.get("/managers/discounts",alldiscounts)
+router.get("/discounts",alldiscounts)
 
 
-export default router
+export default router;

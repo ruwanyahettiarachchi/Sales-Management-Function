@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import './css/updateitem.css';
+
 import { app } from '../firebase';
 import { getStorage, uploadBytesResumable, ref, getDownloadURL } from 'firebase/storage';
 
-function UpdateItemDetails() {
+function UpdateDiscountDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -63,7 +63,8 @@ function UpdateItemDetails() {
       if (data.success) {
         console.log('Discount details updated successfully');
         alert("Updated successfully");
-        navigate('/items');
+        navigate('/allDiscount')
+        
       } else {
         console.error(data.message);
       }
@@ -74,13 +75,13 @@ function UpdateItemDetails() {
 
   return (
     <div className='service-update'>
-      <label>Item Name:</label>
+      <label>Discount ID:</label>
       <input type="text" id="discountId" name="discountId" onChange={handleInputChange} value={updatediscount?.discountId} /><br />
-      <label>Category:</label>
+      <label>Item Category:</label>
       <input type="text" id="itemCategory" name="itemCategory" onChange={handleInputChange} value={updatediscount?.itemCategory} /><br />
-      <label>Unit Price:</label>
+      <label>Discount percentage:</label>
       <input type="text" id="discount" name="discount" onChange={handleInputChange} value={updatediscount?.discount} /><br />
-      <label>Quantity:</label>
+      <label>Promo Code:</label>
       <input type="text" id="promoCode" name="promoCode" onChange={handleInputChange} value={updatediscount?.promoCode} /><br />
      
 
@@ -89,4 +90,4 @@ function UpdateItemDetails() {
   );
 }
 
-export default UpdateDiscount;
+export default UpdateDiscountDetails;
