@@ -60,7 +60,19 @@ export default function AddDiscount() {
       <h1>Add discount</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder='discount Id' onChange={(e) => setFormData({ ...formData, discountId: e.target.value })} />
-        <input type="text" placeholder='item Category' onChange={(e) => setFormData({ ...formData, itemCategory: e.target.value })} />
+        <select
+          name="itemCategory"
+          value={formData.itemCategory}
+          onChange={handleChange}
+          className="category-dropdown"
+        >
+          <option value="">Select Category</option>
+          <option value="trousers">Trousers</option>
+          <option value="jeans">Jeans</option>
+          <option value="frocks">Frocks</option>
+          <option value="tops">Tops</option>
+          <option value="tshirts">T-Shirts</option>
+        </select>
         <input type="text" placeholder='discount' onChange={(e) => setFormData({ ...formData, discount: e.target.value })} />
         <input type="text" placeholder='promo Code' onChange={(e) => setFormData({ ...formData, promoCode: e.target.value })} />
 
